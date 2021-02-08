@@ -1,4 +1,5 @@
 <head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
     <style>
         *,
@@ -19,17 +20,18 @@
           min-height: 100vh;
           font-family: "Lato", sans-serif;
           line-height: 1.5;
+          background-image: linear-gradient(to right, #82F7FE 0%, #66A6FF 100%);
           color: #111;
         }
 
         main {
           max-width: 720px;
           width: 100%;
-          border: 2.5px solid #330867;
+          border: 2.5px solid #13547A;
           border-radius: 2.5px;
           box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
             0 5px 5px rgba(17, 17, 17, 0.25);
-          background-image: linear-gradient(to top, #30cfd0 0%, #330867 100%);
+            background-image: linear-gradient(to left, #80D0C7 0%, #13547A 100%);
         }
 
         h1 {
@@ -39,6 +41,7 @@
 
         input,
         button {
+          size: 1px;
           font-family: inherit;
           line-height: inherit;
           color: inherit;
@@ -49,6 +52,9 @@
         input {
           box-sizing: border-box;
           width: 100%;
+          border: 2.5px solid #13547A;
+          border-radius: 2.5px;
+          box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
         }
 
         .buttons {
@@ -60,6 +66,7 @@
           flex: 1;
           background-color: transparent;
           color: white;
+          
         }
 
         section {
@@ -71,14 +78,23 @@
     </style>
 </head>
 <main>
-  <h1>URL Shortener</h1>
+  <div style="text-align: center;"><h1>SCut Shortener</h1></div>
   <form id="post-form">
-    {% csrf_token %}
-    <input type="text" name="link" id="link" placeholder="Enter URL here">
-    <input type="text" name="prefix" id="prefix" placeholder="Enter prefix here">
-    <div class="buttons">
-      <button type="submit" id="shorten">Shorten</button>
-    </div>
+      {% csrf_token %}
+      <div class="container">
+        <div class='row'>
+          <div class="col-sm-8">
+            <input type="text" name="link" id="link" placeholder="Enter URL here">
+          </div>
+          <div class="col-sm-4">
+            <input type="text" name="prefix" id="prefix" placeholder="Enter prefix here">
+          </div>
+        </div>
+      </div>
+      <br/>
+      <div class="buttons">
+        <button type="submit" id="shorten">Shorten</button>
+      </div>
   </form>
   
   <section id="section"><h2></h2></section>
@@ -99,7 +115,7 @@
         csrfmiddlewaretoken:$('input[name=csrfmiddlewaretoken]').val(),
       },
       success: function(data){
-        if (data === 'invalid prefix'){
+        if (data === 'invalid'){
             $('h2').html(`This prefix is already taken, try another prefix.`)
         } else {
             let link = "127.0.0.1:8000/"+data;

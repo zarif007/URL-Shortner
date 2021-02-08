@@ -20,11 +20,14 @@ def create(request):
         
         find = Url.objects.filter(uuid=uid).count()
         if find: 
-            return HttpResponse('invalid prefix')
+            return HttpResponse('invalid')
         else:
-            new_url = Url(link=link, uuid=uid)
-            new_url.save()
-            return HttpResponse(uid)
+            try:
+                new_url = Url(link=link, uuid=uid)
+                new_url.save()
+                return HttpResponse(uid)
+            except:
+                return HttpResponse('invalid')
  
 def go(request, pk):
     url_details = Url.objects.get(uuid=pk)
