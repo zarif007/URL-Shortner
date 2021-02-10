@@ -28,8 +28,8 @@
           max-width: 720px;
           width: 100%;
           border: 2.5px solid #13547A;
-          border-radius: 2.5px;
-          box-shadow: 0 10px 20px rgba(17, 17, 17, 0.125),
+          border-radius: 10px;
+          box-shadow: 0 25px 20px rgba(17, 17, 17, 0.125),
             0 5px 5px rgba(17, 17, 17, 0.25);
             background-image: linear-gradient(to left, #80D0C7 0%, #13547A 100%);
         }
@@ -41,7 +41,7 @@
 
         input,
         button {
-          size: 1px;
+          size: 10px;
           font-family: inherit;
           line-height: inherit;
           color: inherit;
@@ -62,11 +62,10 @@
         }
 
         button {
+          background-image: linear-gradient(to left, #82F7FE 0%, #66A6FF 100%);
           cursor: pointer;
-          flex: 1;
-          background-color: transparent;
           color: white;
-          
+          border-radius: 2.5px;
         }
 
         section {
@@ -84,16 +83,16 @@
       <div class="container">
         <div class='row'>
           <div class="col-sm-8">
-            <input type="text" name="link" id="link" placeholder="Enter URL here">
+            <input class="form-control" type="text" name="link" id="link" placeholder="Enter URL here">
           </div>
           <div class="col-sm-4">
-            <input type="text" name="prefix" id="prefix" placeholder="Enter prefix here">
+            <input class="form-control" type="text" name="prefix" id="prefix" placeholder="Enter prefix here">
           </div>
         </div>
       </div>
       <br/>
-      <div class="buttons">
-        <button type="submit" id="shorten">Shorten</button>
+      <div class="buttons" style="padding-left: 45%;">
+        <button class="btn btn-secondary" type="submit" id="shorten">Shorten</button>
       </div>
   </form>
   
