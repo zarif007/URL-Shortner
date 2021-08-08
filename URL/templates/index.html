@@ -72,6 +72,7 @@
           min-height: 120px;
           text-align: center;
           background-color: white;
+          border-radius: 10px;
         }
 
     </style>
@@ -96,9 +97,18 @@
       </div>
   </form>
   
-  <section id="section"><h2></h2></section>
-    
+  <br/>
+  <section id="section">
+    <h2 id="p1"></h2>
+    <button onclick="copyToClipboard('#p1')">Copy</button>
+  </section>
+  
+  
+
+  
 </main>
+
+
 
 <script type="text/javascript">
   $(document).on('submit','#post-form',
@@ -123,4 +133,13 @@
       }
     });
   }); 
+  
+  function copyToClipboard(element) {
+  var $temp = $("<input>");
+  $("body").append($temp);
+  $temp.val($(element).text()).select();
+  document.execCommand("copy");
+  $temp.remove();
+}
+
 </script>
